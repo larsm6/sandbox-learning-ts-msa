@@ -30,5 +30,5 @@ npm run start
 Go to [http://localhost:8081](http://localhost:8081) to see how everything's working out.
 Nice! It didn't crash ;). But this time you won't see a lot of entries, because there isn't any database connection provided and your src/daos/User/UserDao.ts file looks quite empty right now.
 
-To resolve this we are going to continue our learnings by attaching a mssql database in 03rd-Prj-Consuming-a-MS-SQL-Server.
-But if you don't know anything about docker right now. I would suggest to have a look into 02nd-Prj-Using-Docker.
+To resolve this we are going to continue our learnings by attaching a mssql database in 03rd-prj-consuming-a-ms-sql-server.
+But if you don't know anything about docker right now. I would suggest to have a look into 02nd-prj-using-docker.
