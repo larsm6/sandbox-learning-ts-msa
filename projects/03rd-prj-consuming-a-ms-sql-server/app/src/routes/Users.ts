@@ -1,12 +1,12 @@
 import StatusCodes from 'http-status-codes';
 import { Request, Response, Router } from 'express';
 
-import UserDao from '@daos/User/UserDao.mock';
+import UserDao from '@daos/User/UserDao';
 import { paramMissingError, IRequest } from '@shared/constants';
 
 const router = Router();
 const userDao = new UserDao();
-const { BAD_REQUEST, CREATED, OK } = StatusCodes;
+const { BAD_REQUEST, CREATED, OK, INTERNAL_SERVER_ERROR } = StatusCodes;
 
 
 
@@ -15,8 +15,14 @@ const { BAD_REQUEST, CREATED, OK } = StatusCodes;
  ******************************************************************************/
 
 router.get('/all', (req: Request, res: Response) => {
-    const users = userDao.getAll();
-    return res.status(OK).json({users});
+    return userDao.getAll().then((users)=>{
+        return res.status(OK).json({users});
+
+    }, (err) => {
+        console.log("Error: ", err);
+        return res.status(INTERNAL_SERVER_ERROR).json({err});
+        
+    });
 });
 
 

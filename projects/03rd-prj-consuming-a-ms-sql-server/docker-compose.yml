@@ -1,0 +1,29 @@
+version: "3.8"
+
+services: 
+  learning-ts-msa-03rd-prj-mssql:
+    container_name: learning-ts-msa-03rd-prj-mssql
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "1433:1433"
+      - "1434:1434"
+    env_file:
+     - ./.db.env.local
+      
+
+  learning-ts-msa-03rd-prj-app:
+    container_name: learning-ts-msa-03rd-prj-app
+    image: node:12
+    depends_on: 
+      - learning-ts-msa-03rd-prj-mssql
+    build: 
+      context: ./app/
+      dockerfile: Dockerfile
+    command: npm run start
+    restart: on-failure
+    expose:
+      - "1433"
+    ports: 
+      - "8081:8081"
+    env_file:
+     - ./.env.local

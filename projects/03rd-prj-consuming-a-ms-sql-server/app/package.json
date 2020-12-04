@@ -1,5 +1,5 @@
 {
-  "name": "01st-ts-express-prj",
+  "name": "03rd-prj-consuming-a-ms-sql-server",
   "version": "0.0.0",
   "scripts": {
     "build": "ts-node build.ts && tsc --build tsconfig.prod.json",
@@ -59,6 +59,7 @@
     "build.ts"
   ],
   "dependencies": {
+    "@types/mssql": "^6.0.5",
     "command-line-args": "^5.1.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -69,7 +70,8 @@
     "jet-logger": "^1.0.4",
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mssql": "^6.2.3"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.0.0",
